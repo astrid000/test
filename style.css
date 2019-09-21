@@ -1,0 +1,10 @@
+/*CSS 選擇器*/
+/*標籤名稱選擇器*/
+body{background-color:tan;font-family:"微軟正黑體"，"新細明體" }
+/*ID 選擇器*/
+#del{text-decoration:line-through;}
+/*Class 選擇器*/
+.title{font-size:24px;font-weight:bold}
+.context{width:500px;margin-top:10px;border:1px dashed rosybrown;padding:10px;}
+.keyword{color:royalblue}
+.underline{text-decoration:underline;}
