@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Example PHP+PDO+POO+MVC</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <?php
+    $searchTitle = $data['searchTitle'];
+    $filteredPagedTodos = $data['filteredPagedTodos'];
+    $currentPage = $data['currentPage'];
+    $filteredTotalPages = $data['totalPages'];
+
+
+    ?>
+</head>
+
+<body>
+    <div class="col-lg-12">
+        <h3>Todo</h3>
+        <hr />
+    </div>
+    <div class="row" style="margin:0px auto;width: 80%;">
+        <div class="col-lg-7 col-sm-7 order-2 order-lg-1">
+            <section style="height: 400px;">
+                <?php if (count($filteredPagedTodos) > 0) { ?>
+                    <?php foreach ($filteredPagedTodos as $todo) { ?>
+                        <?php echo $todo["id"]; ?> -
+                        <?php echo $todo["Title"]; ?> -
+                        <?php echo $todo["Type"]; ?> -
+                        <?php echo $todo["Content"]; ?> -
+                        <?php echo $todo["Date"]; ?>
+                        <hr />
+                    <?php } ?>
+                <?php } else { ?>
+                    <p style="font-weight: bold;text-align:center;font-size:20px">-查無資料-</p>
+                <?php } ?>
+                <!-- 換頁的顯示按鈕 -->
+                <div class="pagination">
+                    <?php for ($i = 1; $i <= $filteredTotalPages; $i++) { ?>
+                        <li class="<?php echo ($i == $currentPage) ? 'active' : ''; ?>">
+                            <a href="?page=<?php echo $i; ?>&search_title=<?php echo $searchTitle; ?>"><?php echo $i; ?></a>
+                        </li>
+                    <?php } ?>
+                </div>
+            </section>
+        </div>
+        <!-- 搜尋欄的顯示框 -->
+        <div class="col-lg-5 col-sm-5 order-1 order-lg-2" style="margin-bottom: 20px;">
+            <form action="" method="GET">
+                <input type="text" name="search_title" placeholder="搜尋 Title" value="<?php echo $searchTitle; ?>" />
+                <input type="submit" value="搜尋" />
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
